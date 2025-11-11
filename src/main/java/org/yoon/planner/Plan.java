@@ -69,8 +69,25 @@ public class Plan {
     @Override
     public String toString() {
         String slevel = "";
+        String scategory = "";
+        String sfinish = "";
         for(int i=0;i<level;i++) slevel += "*";
-        String str = String.format("%-3s", slevel) + String.format("%-6s", category) + String.format("%-3s", finish) + String.format("%10s", created_date) + "  " + contents;
+        if(category==1) {
+            scategory = "학업";
+        } else if (category==2) {
+            scategory = "약속";
+        } else if (category==3) {
+            scategory = "개인";
+        }
+        if(finish==1) {
+            sfinish = "O";
+        } else if (finish==0) {
+            sfinish = "X";
+        } else {
+            sfinish = "--";
+        }
+        
+        String str = String.format("%-3s", slevel) + String.format("%-6s", scategory) + String.format("%-3s", sfinish) + String.format("%10s", created_date) + "  " + contents;
         return str;
     }
 
