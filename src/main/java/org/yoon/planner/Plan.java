@@ -3,17 +3,78 @@ package org.yoon.planner;
 public class Plan {
     private int id;
     private int level;
-    private String title;
-    private String detail;
+    private int category;
+    private int finish;
+    private String created_date;
+    private String contents;
 
     Plan(){}
-    Plan(int id, int level, String title, String detail) {
+    Plan(int id, int level, int category, int finish, String created_date, String contents) {
         this.id = id;
         this.level = level;
-        this.title = title;
-        this.detail = detail;
+        this.category = category;
+        this.finish = finish;
+        this.created_date = created_date;
+        this.contents = contents;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    public int getFinish() {
+        return finish;
+    }
+
+    public void setFinish(int finish) {
+        this.finish = finish;
+    }
+
+    public String getCreated_date() {
+        return created_date;
+    }
+
+    public void setCreated_date(String created_date) {
+        this.created_date = created_date;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
+    }
+
+    @Override
+    public String toString() {
+        String slevel = "";
+        for(int i=0;i<level;i++) slevel += "*";
+        String str = String.format("%-3s", slevel) + String.format("%-6s", category) + String.format("%-3s", finish) + String.format("%10s", created_date) + "  " + contents;
+        return str;
+    }
+
+    public String toFileString() {
+        return this.level + "|" + this.category + "|" + this.finish + "|" + this.created_date + "|" + this.contents ;
+    }
 }
