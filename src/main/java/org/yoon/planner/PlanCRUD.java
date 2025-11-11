@@ -28,7 +28,8 @@ public class PlanCRUD implements ICRUD {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(selectall);
             while (true) {
-                if (!rs.next()) break;
+                if (!rs.next())
+                    break;
                 int id = rs.getInt("id");
                 int level = rs.getInt("level");
                 int category = rs.getInt("category");
@@ -45,8 +46,22 @@ public class PlanCRUD implements ICRUD {
     }
 
     @Override
-    public Object addPlan() {
-        return null;
+    public Object add() {
+        System.out.println("=> 중요도(1,2,3) : ");
+        int level = s.nextInt();
+        System.out.println("=> 카테고리(1_학업 2_약속 3_개인) : ");
+        int category = s.nextInt();
+        System.out.println("=> 작성 날짜(YYYY-MM-DD) : ");
+        String created_date = s.nextLine();
+        System.out.println("=> 일정 내용 : ");
+        String contents = s.nextLine();
+        return new Plan(0, level, category, -1, created_date, contents) ;
+    }
+
+    public void addPlan() {
+        Plan one = (Plan) add();
+        list.add(one);
+        System.out.println("새 단어가 단어장에 추가되었습니다.");
     }
 
     @Override
@@ -64,69 +79,69 @@ public class PlanCRUD implements ICRUD {
 
     }
 
-    public void listAll(){
+    public void listAll() {
         loadData();
         System.out.println("---------------------------");
-        for(int i=0; i<list.size();i++){
-            System.out.print((i+1) +" ");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print((i + 1) + " ");
             System.out.println(list.get(i).toString());
         }
         System.out.println("---------------------------");
     }
 
-    public void listLevelPlan(){
+    public void listLevelPlan() {
         System.out.println("=> 중요도(1~3) 입력 : ");
         int level = s.nextInt();
         s.nextLine();
 
         ArrayList<Plan> temp = new ArrayList<>();
-        for(int i=0; i<list.size();i++){
-            if(list.get(i).getLevel() == level){
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getLevel() == level) {
                 temp.add(list.get(i));
             }
         }
         System.out.println("---------------------------");
-        for(int i=0; i<temp.size();i++){
-            System.out.print((i+1) +" ");
+        for (int i = 0; i < temp.size(); i++) {
+            System.out.print((i + 1) + " ");
             System.out.println(temp.get(i).toString());
         }
         System.out.println("---------------------------");
     }
 
-    public void listCategoryPlan(){
+    public void listCategoryPlan() {
         System.out.println("=> 카테고리(1_학업 2_약속 3_개인) 입력 : ");
         int category = s.nextInt();
         s.nextLine();
-        
+
         ArrayList<Plan> temp = new ArrayList<>();
-        for(int i=0; i<list.size();i++){
-            if(list.get(i).getCategory() == category){
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getCategory() == category) {
                 temp.add(list.get(i));
             }
         }
         System.out.println("---------------------------");
-        for(int i=0; i<temp.size();i++){
-            System.out.print((i+1) +" ");
+        for (int i = 0; i < temp.size(); i++) {
+            System.out.print((i + 1) + " ");
             System.out.println(temp.get(i).toString());
         }
         System.out.println("---------------------------");
     }
 
-    public void listSearchPlan(){
+    public void listSearchPlan() {
         System.out.println("=> 찾고 싶은 내용 : ");
         String keyword = s.next();
         s.nextLine();
         ArrayList<Plan> temp = new ArrayList<>();
 
-        for(int i=0; i<list.size();i++){
+        for (int i = 0; i < list.size(); i++) {
             String contents = list.get(i).getContents();
-            if(contents.contains(keyword)){
+            if (contents.contains(keyword)) {
                 temp.add(list.get(i));
             }
         }
         System.out.println("---------------------------");
-        for(int i=0; i<temp.size();i++){
-            System.out.print((i+1) +" ");
+        for (int i = 0; i < temp.size(); i++) {
+            System.out.print((i + 1) + " ");
             System.out.println(temp.get(i).toString());
         }
         System.out.println("---------------------------");
