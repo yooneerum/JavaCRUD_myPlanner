@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-
+// git 사용법 익히기.. 피처 작업 어케하노
     private static Connection conn = null;
     public static Connection getConnection() {
         if(conn == null) {
