@@ -11,7 +11,7 @@ public class PlanCRUD implements ICRUD {
 
     ArrayList<Plan> list;
     Scanner s;
-    final String fname = "Dictionary.txt";
+    final String fname = "Plans.txt";
     Connection conn;
 
     PlanCRUD(Scanner s) {
@@ -23,7 +23,7 @@ public class PlanCRUD implements ICRUD {
     public void loadData() {
         list.clear();
 
-        String selectall = "select * from Dictionary";
+        String selectall = "select * from Plans";
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(selectall);
@@ -61,7 +61,7 @@ public class PlanCRUD implements ICRUD {
     public void addPlan() {
         Plan one = (Plan) add();
         list.add(one);
-        System.out.println("새 단어가 단어장에 추가되었습니다.");
+        System.out.println("새 일정이 리스트에 추가되었습니다.");
     }
 
     @Override
