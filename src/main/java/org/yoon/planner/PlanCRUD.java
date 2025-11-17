@@ -49,8 +49,10 @@ public class PlanCRUD implements ICRUD {
     public Object add() {
         System.out.println("=> 중요도(1,2,3) : ");
         int level = s.nextInt();
+        s.nextLine();
         System.out.println("=> 카테고리(1_학업 2_약속 3_개인) : ");
         int category = s.nextInt();
+        s.nextLine();
         System.out.println("=> 작성 날짜(YYYY-MM-DD) : ");
         String created_date = s.nextLine();
         System.out.println("=> 일정 내용 : ");

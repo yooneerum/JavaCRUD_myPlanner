@@ -29,6 +29,8 @@ public class PlanManager {
     }
 
     public void start() {
+
+
         while (true) {
             int menu = selectMenu();
             if (menu == 0)
@@ -43,13 +45,13 @@ public class PlanManager {
                 planCRUD.listSearchPlan();
             } else if (menu == 5) {
                 planCRUD.addPlan();
-            } else if (menu == 6) {
-                planCRUD.updatePlan();
-            } else if (menu == 7) {
-                planCRUD.deletePlan();
-            }else if (menu == 8) {
-                planCRUD.saveFile();
-            }
+            } //else if (menu == 6) {
+//                planCRUD.updatePlan();
+//            } else if (menu == 7) {
+//                planCRUD.deletePlan();
+//            } else if (menu == 8) {
+//                planCRUD.saveFile();
+//            }
         }
 
     }
